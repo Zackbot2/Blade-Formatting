@@ -1,0 +1,136 @@
+{
+	"$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+	"name": "Custom Assembly",
+	"scopeName": "source.blade-asm",
+	"patterns": [
+    { "include": "#comments" },
+    { "include": "#labels" },
+    { "include": "#labelReferences" },
+    { "include": "#registers" },
+    { "include": "#instructions" },
+    { "include": "#addressing" },
+    { "include": "#constDeclarations" },
+    { "include": "#aliasUsage" },
+    { "include": "#numbers" }
+	],
+	"repository": {
+		"comments": {
+			"patterns": [{
+				"name": "comment.line.double-slash.blade-asm",
+				"match": "//.*$"
+			}]
+		},
+
+		"labels": {
+			"patterns": [{
+				"name": "entity.name.label.blade-asm",
+				"match": "^\\s*[A-Za-z_][A-Za-z0-9_]*:"
+			}]
+		},
+
+		"labelReferences": {
+			"patterns": [
+				{
+				"name": "entity.name.label.blade-asm",
+				"match": "\\b(call|jmp|je|jne|jle|jl|jge|jg)\\s+([A-Za-z_][A-Za-z0-9_]*)\\b",
+				"captures": {
+					"1": {
+						"name": "keyword.mnemonic.jump.blade-asm"
+					},
+					"2": {
+						"name": "entity.name.label.blade-asm"
+					}
+				}
+			}
+			]
+		},
+
+		"registers": {
+			"patterns": [{
+				"name": "variable.register.blade-asm",
+				"match": "\\b(zr|r[1-9]|r1[0-3]|sp|flags)\\b"
+			}]
+		},
+
+		"addressing": {
+			"patterns": [
+			{
+				"name": "meta.addressing.brackets.blade-asm",
+				"match": "\\[|\\]"
+			},
+			{
+				"name": "meta.addressing.percent.blade-asm",
+				"match": "%[A-Za-z_][A-Za-z0-9_]*"
+			}]
+		},
+
+		"instructions": {
+			"patterns": [
+			{
+				"name": "keyword.mnemonic.basic.blade-asm",
+				"match": "\\b(nop|in|out|console|time_[0-3]|counter|keyboard|draw)\\b"
+			},
+			{
+				"name": "keyword.mnemonic.logic.blade-asm",
+				"match": "\\b(nand|and|or|nor|xor|xnor|cmp|lsl|lsr)\\b"
+			},
+			{
+				"name": "keyword.mnemonic.math.blade-asm",
+				"match": "\\b(add|sub|mul|div|mod)\\b"
+			},
+			{
+				"name": "keyword.mnemonic.memory.blade-asm",
+				"match": "\\b(imm|move|store_8|store_16|load_8|load_16|dstore)\\b"
+			},
+			{
+				"name": "meta.addressing.storage.blade-asm",
+				"match": "\\b(pstore_8|pstore_16|pload_8|pload_16)\\b"
+			},
+			{
+				"name": "keyword.mnemonic.stack.blade-asm",
+				"match": "\\b(push|pop)\\b"
+			},
+			{
+				"name": "keyword.mnemonic.jump.blade-asm",
+				"match": "\\b(call|ret|return|jmp|je|jne|jle|jl|jge|jg)\\b"
+			}
+			]
+		},
+
+
+		"constDeclarations": {
+			"patterns": [
+				{
+				"name": "support.constant.const.blade-asm",
+				"match": "\\bconst\\b"
+				},
+				{
+				"name": "variable.other.constant.alias.blade-asm",
+				"match": "\\bconst\\s+([A-Za-z_][A-Za-z0-9_]*)",
+				"captures": {
+					"1": {
+					"name": "variable.other.constant.alias.blade-asm"
+					}
+				}
+				}
+			]
+		},
+
+		"aliasUsage": {
+			"patterns": [
+				{
+				"name": "variable.other.constant.alias.blade-asm",
+				"match": "\\b[A-Za-z_][A-Za-z0-9_]*\\b"
+				}
+			]
+		},
+
+
+		"numbers": {
+			"patterns": [{
+				"name": "constant.numeric.blade-asm",
+				"match": "\\b\\d+\\b"
+			}]
+		}
+	}
+}

@@ -1,0 +1,25 @@
+{
+  "name": "JSON",
+  "displayName": "bladeLanguage",
+  "description": "",
+  "version": "0.0.1",
+  "engines": {
+    "vscode": "^1.108.1"
+  },
+  "categories": [
+    "Programming Languages"
+  ],
+  "contributes": {
+    "languages": [{
+      "id": "blade-asm",
+      "aliases": ["Custom Assembly", "blade-asm"],
+      "extensions": [".asm"],
+      "configuration": "./language-configuration.json"
+    }],
+    "grammars": [{
+      "language": "blade-asm",
+      "scopeName": "source.blade-asm",
+      "path": "./syntaxes/blade-asm.tmLanguage.json"
+    }]
+  }
+}
