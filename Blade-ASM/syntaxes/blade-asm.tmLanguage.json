@@ -80,7 +80,7 @@
 			},
 			{
 				"name": "keyword.mnemonic.memory.blade-asm",
-				"match": "\\b(imm|move|store_8|store_16|load_8|load_16|dstore)\\b"
+				"match": "\\b(imm|mov|store_8|store_16|load_8|load_16|dstore)\\b"
 			},
 			{
 				"name": "meta.addressing.storage.blade-asm",
