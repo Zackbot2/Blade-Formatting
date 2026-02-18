@@ -12,4 +12,4 @@ Editing files within the game is a lengthy process and is expensive in terms of 
 ## Building
 Ensure VSCE is installed (Install with `npm install -g vsce`).
 
-Run: `vsce package` in /Blade-ASM
+Run: `vsce package` in ./Blade-ASM

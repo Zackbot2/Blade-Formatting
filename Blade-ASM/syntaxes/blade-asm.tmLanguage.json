@@ -92,7 +92,11 @@
 			},
 			{
 				"name": "keyword.mnemonic.jump.blade-asm",
-				"match": "\\b(call|ret|return|jmp|je|jne|jle|jl|jge|jg)\\b"
+				"match": "\\b(call|ret(urn)?|j(mp|e|ne|(g|l|a|b)e?)(_rel)?)\\b"
+			},
+			{
+				"name": "keyword.control.blade-asm",
+				"match": "\\b(trap|cstore|cload|ex((get|set)_(pc|status|sp)|ret))\\b"
 			}
 			]
 		},
